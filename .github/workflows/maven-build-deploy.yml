@@ -116,7 +116,7 @@ on:
         value: ${{ jobs.build-deploy.outputs.version }}
 
 jobs:
-  parent-deploy:
+  quantum-parent-deploy:
     uses: lunarstra/Quantum/.github/workflows/maven-build-deploy.yml@main
     with:
       java-version: ${{ inputs.java-version }}
@@ -132,7 +132,7 @@ jobs:
       MAVEN_TOKEN: ${{ secrets.MAVEN_TOKEN }}
 
   build-deploy:
-    needs: parent-deploy
+    needs: quantum-parent-deploy
     runs-on: ubuntu-latest
     outputs:
       version: ${{ steps.get-version.outputs.version }}
